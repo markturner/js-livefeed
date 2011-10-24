@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Jquery 'live' feed</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="container">
+  <div id="div1" class="display">Item 1</div>
+  <div id="div2" class="display">Item 2</div>
+  <div id="div3" class="display">Item 3</div>
+  <div id="div4" class="display">Item 4</div>
+  <div id="div5" class="display">Item 5</div>
+  <div id="div6" class="display">Item 6</div>
+  <div id="div7" class="display">Item 7</div>
+  <div id="div8" class="display">Item 8</div>
+  <div id="div9" class="display">Item 9</div>
+  <div id="div10" class="display">Item 10</div>
+  <div id="div11" class="display">Item 11</div>
+  <div id="div12" class="display">Item 12</div>
+  <div id="div13" class="display">Item 13</div>
+  <div id="div14" class="display">Item 14</div>
+  <div id="div15" class="display">Item 15</div>
+  <div id="div16" class="display">Item 16</div>
+  <div id="div17" class="display">Item 17</div>
+  <div id="div18" class="display">Item 18</div>
+  <div id="div19" class="display">Item 19</div>
+  <div id="div20" class="display">Item 20</div>
+</div>
+
+<script>
+  $(document).ready(function() {    
+    
+    $('#container div').hide();
+    $('div','#container').filter( function() { return this.id.match('div16'); }).show();
+    $('div','#container').filter( function() { return this.id.match('div17'); }).show();
+    $('div','#container').filter( function() { return this.id.match('div18'); }).show();
+    $('div','#container').filter( function() { return this.id.match('div19'); }).show();
+    $('div','#container').filter( function() { return this.id.match('div20'); }).show();
+    
+    var timer = setInterval( showDiv, 8000);
+    var counter = 21;
+
+    function showDiv() {
+      if (counter ==21) { counter--; return; }
+      
+      var counterlow = counter-5;
+      
+      $('div','#container')
+        .filter( function() { return this.id.match('div' + counter); })
+        .stop()
+        .hide('fast');
+
+      $('div','#container')
+        .filter( function() { return this.id.match('div' + counterlow); })   
+        .show('fast');
+      if (counterlow != 3) {
+        counter--;
+      };
+
+    }
+    
+  });
+</script>
+
+</body>
